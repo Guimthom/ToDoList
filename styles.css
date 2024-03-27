@@ -1,9 +1,12 @@
 :root {
     --white: #fff;
-    --light-grey: #f5f6f7;
+    --light-grey: #ccd1d6;
     --dark-grey: #0a0a23;
     --yellow: #f1be32;
     --golden-yellow: #feac32;
+    --purple : #8338EC;
+    --blue : #3A86FF;
+    --background-bright : #EBEEFF;
   }
   
   *,
@@ -15,7 +18,7 @@
   }
   
   body {
-    background-color: var(--dark-grey);
+    background-color: var(--background-bright);
   }
   
   main {
@@ -26,15 +29,29 @@
   }
   
   h1 {
-    color: var(--light-grey);
+    color: var(--purple);
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
     margin: 20px 0 40px 0;
+  }
+
+  p{
+    margin: 5px;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+  }
+
+  .task{
+    background-color: var(--background-bright);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 8px;
   }
   
   .todo-app {
     background-color: var(--white);
     width: 300px;
     height: 350px;
-    border: 5px solid var(--yellow);
     border-radius: 8px;
     padding: 15px;
     position: relative;
@@ -46,24 +63,73 @@
   .btn {
     cursor: pointer;
     width: 100px;
-    margin: 10px;
-    color: var(--dark-grey);
-    background-color: var(--golden-yellow);
-    background-image: linear-gradient(#fecc4c, #ffac33);
-    border-color: var(--golden-yellow);
-    border-width: 3px;
+    margin: 5px;
+    padding: 2px;
+    color: var(--white);
+    background-color: var(--purple);
+    border: 2px solid var(--purple);
+    border-radius: 0.5rem;
   }
   
   .btn:hover {
-    background-image: linear-gradient(#ffcc4c, #f89808);
+    background-color: var(--blue);
+    border-color: var(--blue);
   }
   
-  .large-btn {
+  .large-btn-inside {
     width: 80%;
-    font-size: 1.2rem;
+    padding: 8px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: var(--purple);
+    color: var(--white);
+    border: 2px solid var(--purple);
+    border-radius: 0.5rem;
     align-self: center;
     justify-self: center;
   }
+
+  .large-btn-inside:hover{
+    background-color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  .large-btn-outside {
+    width: 200px;
+    margin: 30px;
+    padding: 10px 25px;
+    color: var(--purple);
+    border: 2px solid var(--purple);
+    border-radius: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .large-btn-outside::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--purple);
+    border-radius: inherit;
+    translate: 6px 6px;
+    transition: 0.25s;
+    z-index: -1;
+  }
+
+  .large-btn-outside:hover::after{
+    translate: 0;
+  }
+
+  .large-btn-outside:hover{
+    background-color: var(--purple);
+    color: #f9fafb;
+  }
+
   
   .close-task-form-btn {
     background: none;
@@ -84,7 +150,7 @@
     transform: translate(-50%, -50%);
     background-color: var(--white);
     border-radius: 5px;
-    padding: 15px;
+    padding: 25px;
     width: 300px;
     height: 350px;
     flex-direction: column;
@@ -117,22 +183,33 @@
   
   .task-form-label {
     margin-bottom: 5px;
-    font-size: 1.3rem;
-    font-weight: bold;
   }
+
+label{
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--light-grey);
+}
   
-  #title-input,
-  #date-input,
-  #description-input {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 2px;
-  }
-  
+input, textarea{
+  border: 1px solid var(--light-grey);
+  border-radius: 0.3rem;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 2px;
+  color: var(--dark-grey);
+}
+
   #confirm-close-dialog {
+    top: 25%;
+    width: 450px;
     padding: 10px;
     margin: 10px auto;
-    border-radius: 15px;
+    border: 2px solid var(--purple);
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s;
   }
   
   .confirm-close-dialog-btn-container {
@@ -142,8 +219,10 @@
   }
   
   .discard-message-text {
-    font-weight: bold;
-    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
   }
   
   #tasks-container {
@@ -151,15 +230,13 @@
     overflow-y: auto;
   }
   
-  .task {
-    margin: 5px 0;
-  }
   
   .hidden {
     display: none;
   }
   
   @media (min-width: 576px) {
+
     .todo-app,
     .task-form {
       width: 400px;
@@ -167,7 +244,7 @@
     }
   
     .task-form-label {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   
     #title-input,
@@ -181,4 +258,6 @@
       padding: 5px;
       margin-bottom: 20px;
     }
+
+    
   }
